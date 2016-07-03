@@ -1,3 +1,11 @@
+Requirements:
+  Nginx, git, php5-fpm, bc, bash.
+  
+To add a new HTTPS vHost to your Nginx configuration, just execute new_vhost as root (or with sudo).
+
+If you use new_vhost frequently, you may be interrested to copy new_vhost to a folder of you $PATH (ie. /usr/sbin/).
+
+
 Letsencrypt-nginx is a Bash script that generates config files for Nginx.
 The script follows these steps :
 
