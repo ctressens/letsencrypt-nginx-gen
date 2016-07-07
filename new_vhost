@@ -110,7 +110,8 @@ server {
 
 	server_name $server_name;
 	return 301 https://\$host\$request_uri;
-}" > /etc/nginx/sites-enabled/$asv.$server_name.conf
+}" > /etc/nginx/sites-enabled/$asv-https.conf
+/bin/rm /etc/nginx/sites-enabled/$config_path
 
 /etc/init.d/nginx restart
 rm -Rf /tmp/$le_path
