@@ -21,13 +21,8 @@ echo "Type your vHost root_path :"
 read root_path
 
 echo "The config files will be stored in /etc/nginx/sites-enabled/. How do you want the config file to be named ? [recommended : $server_name.conf]"
-read asv;
+read config_path;
 
-if ( [ $asv = "y" ] ); then 
-	config_path=$server_name.conf
-else
-	config_path=$asv
-fi
 
 echo "The being-generated-config file needs PHP-FPM installed."
 
@@ -52,16 +47,7 @@ server {
 		fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_read_timeout 300;
 	}
-}" > /tmp/$config_path
-
-echo "Are you sure you want to create this vHost ? [Y/n]"
-read sure
-
-if [ $sure == "y" ] || [ $sure == "" ] ; then
-	mv /tmp/$config_path /etc/nginx/sites-enabled
-else
-	rm /tmp/$config_path
-fi
+}" > $config_path
 
 /usr/sbin/nginx -t && /etc/init.d/nginx restart
 
@@ -110,7 +96,7 @@ server {
 
 	server_name $server_name;
 	return 301 https://\$host\$request_uri;
-}" > /etc/nginx/sites-enabled/$asv-https.conf
+}" > $config_path-https
 /bin/rm /etc/nginx/sites-enabled/$config_path
 
 /etc/init.d/nginx restart
