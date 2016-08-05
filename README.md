@@ -1,6 +1,17 @@
-Requirements:
-  Nginx, git, php5-fpm, bc, bash.
-  
+## Warning
+**This script is being fixed, you should not use it now !**
+
+## Requirements:
+
+To run letsencrypt-nginx-gen, you will need the following packages :
+Markup : * Nginx
+  * Git
+  * php5-fpm
+  * bc
+  * bash.
+
+## Instructions 
+
 To add a new HTTPS vHost to your Nginx configuration, just execute new_vhost as root (or with sudo).
 
 If you use new_vhost frequently, you may want to copy new_vhost to a folder of your $PATH (ie. /usr/sbin/).
@@ -18,4 +29,5 @@ The script follows these steps :
 
 Warning: Before launching this script, please make sure that the A/AAAA fields are properly propagated and correct (ie. example.com's A/AAAA field must contain webserver's IP adress) ; else, LetsEncrypt's certbot will fail.
 
+## Etc
 This script is not affiliated to Letsencrypt Certificate Authority.
